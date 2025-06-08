@@ -12,6 +12,7 @@
 
     <modules>
         <module>npuzzle</module>
+        <module>nqueens</module>
     </modules>
 
     <properties>
