@@ -17,7 +17,7 @@ class Util {
         shuffle(table);
         int emptyIndex = -1;
         for (int i = 0; i < table.length; ++i) {
-            if (table[i] == 0) {
+            if (table[i] == NPuzzle.EMPTY_CELL) {
                 emptyIndex = i;
                 break;
             }
@@ -26,17 +26,17 @@ class Util {
     }
 
     public static NPuzzle newNPuzzle(int... numbers) {
-        if (numbers.length > Byte.MAX_VALUE) {
-            throw new IllegalArgumentException("Size is too large");
-        }
-        int length = (int) Math.sqrt(numbers.length);
-        if (length == 0 || length * length != numbers.length) {
+        int size = (int) Math.sqrt(numbers.length);
+        if (size == 0 || size * size != numbers.length) {
             throw new IllegalArgumentException("Invalid size");
+        }
+        if (size > Byte.MAX_VALUE) {
+            throw new IllegalArgumentException("Size is too large");
         }
         // Find empty cell index
         int emptyIndex = -1;
         for (int i = 0; i < numbers.length; ++i) {
-            if (numbers[i] <= 0) {
+            if (numbers[i] <= NPuzzle.EMPTY_CELL) {
                 emptyIndex = i;
                 break;
             }
@@ -49,7 +49,7 @@ class Util {
         for (int i = 0; i < numbers.length; ++i) {
             table[i] = (byte) numbers[i];
         }
-        table[emptyIndex] = 0;
+        table[emptyIndex] = NPuzzle.EMPTY_CELL;
         // Each number from 0 to table.length must be present
         boolean[] found = new boolean[table.length];
         for (byte b : table) {
@@ -64,7 +64,7 @@ class Util {
             }
         }
 
-        return new NPuzzle((byte) length, (byte) emptyIndex, table);
+        return new NPuzzle((byte) size, (byte) emptyIndex, table);
     }
 
     public static boolean isSolvable(NPuzzle nPuzzle) {
@@ -91,7 +91,7 @@ class Util {
             sb.append('|');
             for (int col = 0; col < nPuzzle.size; ++col) {
                 byte cell = nPuzzle.cell(row, col);
-                if (cell != 0) {
+                if (cell != NPuzzle.EMPTY_CELL) {
                     sb.append(String.format(numFormat, cell));
                 } else {
                     sb.append(" ".repeat(digitLength + 2));
@@ -107,7 +107,10 @@ class Util {
         int inversions = 0;
         for (int i = 0; i < numbers.length; ++i) {
             for (int j = i + 1; j < numbers.length; ++j) {
-                if (numbers[i] > numbers[j] && numbers[i] > 0 && numbers[j] > 0) {
+                if (numbers[i] == NPuzzle.EMPTY_CELL || numbers[j] == NPuzzle.EMPTY_CELL) {
+                    continue;
+                }
+                if (numbers[i] > numbers[j]) {
                     ++inversions;
                 }
             }

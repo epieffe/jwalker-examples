@@ -65,7 +65,7 @@ public class NPuzzleGraph implements Graph<NPuzzle> {
     @Override
     public boolean isTarget(NPuzzle node) {
         // The last cell must be empty
-        if (node.table[node.table.length - 1] > 0) {
+        if (node.table[node.table.length - 1] != NPuzzle.EMPTY_CELL) {
             return false;
         }
         // The other cells must be ordered from 1 to n-1
@@ -77,6 +77,8 @@ public class NPuzzleGraph implements Graph<NPuzzle> {
         return true;
     }
 
+    // Returns a new NPuzzle instance with the empty cell
+    // swapped with the cell in newEmptyIndex
     private static NPuzzle swapEmptyCell(NPuzzle nPuzzle, int newEmptyIndex) {
         byte[] newTable = nPuzzle.table.clone();
         newTable[nPuzzle.emptyIndex] = nPuzzle.table[newEmptyIndex];
