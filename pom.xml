@@ -11,6 +11,7 @@
     <name>JWalker - Examples</name>
 
     <modules>
+        <module>maze</module>
         <module>npuzzle</module>
         <module>nqueens</module>
     </modules>
