@@ -6,7 +6,7 @@
     <artifactId>jwalker-nqueens</artifactId>
 
     <parent>
-        <groupId>com.github.epieffe</groupId>
+        <groupId>io.github.epieffe</groupId>
         <artifactId>jwalker-examples</artifactId>
         <version>${revision}</version>
     </parent>
@@ -15,7 +15,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.epieffe</groupId>
+            <groupId>io.github.epieffe</groupId>
             <artifactId>jwalker</artifactId>
         </dependency>
 

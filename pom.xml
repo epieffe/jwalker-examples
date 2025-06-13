@@ -3,7 +3,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.epieffe</groupId>
+    <groupId>io.github.epieffe</groupId>
     <artifactId>jwalker-examples</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
@@ -24,9 +24,9 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.github.epieffe</groupId>
+                <groupId>io.github.epieffe</groupId>
                 <artifactId>jwalker</artifactId>
-                <version>1.0.1-SNAPSHOT</version>
+                <version>1.0.1</version>
             </dependency>
 
             <dependency>
