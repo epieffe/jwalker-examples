@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-class Util {
+class Utils {
 
     private static final Random random = new Random();
 
@@ -41,19 +41,18 @@ class Util {
     public static void prettyPrint(MazeGraph maze, Cell start, List<Edge<Cell>> path) {
         StringBuilder sb = new StringBuilder();
         sb.append('+').append("---".repeat(maze.width())).append("+\n");
-        for (int row = 0; row < maze.height(); row++) {
+        for (int row = 0; row < maze.height(); ++row) {
             sb.append('|');
-            for (int col = 0; col < maze.width(); col++) {
+            for (int col = 0; col < maze.width(); ++col) {
                 if (row == start.row && col == start.col) {
                     sb.append(redColored(" S "));
                 } else if (row == maze.targetRow && col == maze.targetCol) {
                     sb.append(redColored(" E "));
                 } else {
-                    Edge<Cell> edge = findEdgeInPath(row, col, path);
-                    if (edge != null) {
-                        sb.append(redColored(" * "));
-                    } else if (maze.cell(row, col) == MazeGraph.BLOCKED_CELL) {
+                    if (maze.cell(row, col) == MazeGraph.BLOCKED_CELL) {
                         sb.append("XXX");
+                    } else if (isCellInPath(row, col, path)) {
+                        sb.append(redColored(" * "));
                     } else {
                         sb.append("   ");
                     }
@@ -86,14 +85,14 @@ class Util {
         }
     }
 
-    private static Edge<Cell> findEdgeInPath(int row, int col, List<Edge<Cell>> path) {
-        if (path == null) return null;
+    private static boolean isCellInPath(int row, int col, List<Edge<Cell>> path) {
+        if (path == null) return false;
         for (Edge<Cell> edge : path) {
             if (edge.destination.row == row && edge.destination.col == col) {
-                return edge;
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
     private static void shuffle(int[] array) {
