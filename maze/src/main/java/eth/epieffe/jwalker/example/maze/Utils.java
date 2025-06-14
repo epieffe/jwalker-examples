@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-class Util {
+class Utils {
 
     private static final Random random = new Random();
 

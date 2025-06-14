@@ -12,10 +12,11 @@ public class Main {
     private static final int SIZE = 8;
 
     public static void main(String... args) {
-        System.out.format("Generating N-Queens solution on a %1$dx%1$d board:\n\n", SIZE);
-        // Search for a solution
+        System.out.format("Generating N-Queens solution on a %1$d x %1$d board:\n\n", SIZE);
         NQueens sol = generateSolution();
-        System.out.println(Util.toPrettyString(sol));
+
+        // Print solution to stdout
+        Utils.prettyPrint(sol);
         int numThreats = NQueensHeuristics.numThreats(sol);
         System.out.println("is solved: " + (numThreats == 0));
         System.out.println("conflicts: " + numThreats);

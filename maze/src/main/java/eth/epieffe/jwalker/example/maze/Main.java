@@ -14,13 +14,17 @@ public class Main {
 
     public static void main(String... args) {
         System.out.format("Generating random %d x %d maze ...\n", WIDTH, HEIGHT);
-        MazeGraph maze = Util.newMazeWithRandomizedDfs(WIDTH, HEIGHT);
+        MazeGraph maze = Utils.newMazeWithRandomizedDfs(WIDTH, HEIGHT);
         Cell start = Cell.newInstance(0, 0, maze);
 
         System.out.println("solving ...");
         List<Edge<Cell>> path = solve(maze, start);
+        if (path == null) {
+            System.err.println("No solution found");
+            return;
+        }
 
-        Util.prettyPrint(maze, start, path);
+        Utils.prettyPrint(maze, start, path);
         System.out.println("Path length: " + path.size());
     }
 

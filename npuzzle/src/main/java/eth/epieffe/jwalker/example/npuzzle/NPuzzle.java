@@ -29,7 +29,7 @@ public class NPuzzle {
      * @throws IllegalArgumentException if numbers do not represent a valid N-Puzzle instance
      */
     public static NPuzzle newInstance(int... numbers) {
-        return Util.newNPuzzle(numbers);
+        return Utils.newNPuzzle(numbers);
     }
 
     /**
@@ -41,9 +41,9 @@ public class NPuzzle {
      * @throws IllegalArgumentException if size is greater than {@link Byte#MAX_VALUE}
      */
     public static NPuzzle newRandomInstance(int size, boolean checkSolvable) {
-        NPuzzle nPuzzle = Util.newRandomNPuzzle(size);
-        while (checkSolvable && !Util.isSolvable(nPuzzle)) {
-            nPuzzle = Util.newRandomNPuzzle(size);
+        NPuzzle nPuzzle = Utils.newRandomNPuzzle(size);
+        while (checkSolvable && !Utils.isSolvable(nPuzzle)) {
+            nPuzzle = Utils.newRandomNPuzzle(size);
         }
         return nPuzzle;
     }

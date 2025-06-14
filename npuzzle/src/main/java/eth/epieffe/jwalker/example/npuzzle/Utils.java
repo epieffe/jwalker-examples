@@ -2,7 +2,7 @@ package eth.epieffe.jwalker.example.npuzzle;
 
 import java.util.Random;
 
-class Util {
+class Utils {
 
     private static final Random random = new Random();
 
@@ -76,7 +76,7 @@ class Util {
         }
     }
 
-    public static String toPrettyString(NPuzzle nPuzzle) {
+    public static void prettyPrint(NPuzzle nPuzzle) {
         StringBuilder hSep = new StringBuilder().append('+');
         int digitLength = String.valueOf(nPuzzle.table.length).length();
         for (int i = 0; i < nPuzzle.size; ++i) {
@@ -100,7 +100,7 @@ class Util {
             }
             sb.append('\n').append(hSep);
         }
-        return sb.toString();
+        System.out.println(sb);
     }
 
     private static int countInversions(byte[] numbers) {

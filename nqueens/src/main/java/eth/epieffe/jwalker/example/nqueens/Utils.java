@@ -1,10 +1,10 @@
 package eth.epieffe.jwalker.example.nqueens;
 
-class Util {
+class Utils {
 
-    private Util() {}
+    private Utils() {}
 
-    public static String toPrettyString(NQueens nQueens) {
+    public static void prettyPrint(NQueens nQueens) {
         String hSep = '+' + "---+".repeat(nQueens.size()) + '\n';
         StringBuilder sb = new StringBuilder();
         sb.append(hSep);
@@ -19,6 +19,6 @@ class Util {
             }
             sb.append('\n').append(hSep);
         }
-        return sb.toString();
+        System.out.println(sb);
     }
 }
