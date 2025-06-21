@@ -34,16 +34,22 @@ public class NPuzzleHeuristicsTest {
         assertEquals(4, NPuzzleHeuristics.manhattanSum(nPuzzle));
 
         nPuzzle = NPuzzle.newInstance(0, 2, 3, 4, 5, 6, 7, 8, 1);
-        assertEquals(8, NPuzzleHeuristics.manhattanSum(nPuzzle));
+        assertEquals(4, NPuzzleHeuristics.manhattanSum(nPuzzle));
+
+        nPuzzle = NPuzzle.newInstance(8, 1, 2, 5, 0, 3, 4, 7, 6);
+        assertEquals(10, NPuzzleHeuristics.manhattanSum(nPuzzle));
 
         nPuzzle = NPuzzle.newInstance(1, 8, 3, 6, 7, 4, 5, 2, 0);
         assertEquals(12, NPuzzleHeuristics.manhattanSum(nPuzzle));
 
         nPuzzle = NPuzzle.newInstance(3, 8, 1, 6, 5, 4, 0, 2, 7);
-        assertEquals(16, NPuzzleHeuristics.manhattanSum(nPuzzle));
+        assertEquals(14, NPuzzleHeuristics.manhattanSum(nPuzzle));
+
+        nPuzzle = NPuzzle.newInstance(3, 8, 2, 6, 0, 5, 7, 1, 4);
+        assertEquals(14, NPuzzleHeuristics.manhattanSum(nPuzzle));
 
         nPuzzle = NPuzzle.newInstance(0, 2, 3, 13, 5, 6, 7, 8, 9, 10, 11, 12, 4, 14, 15, 1);
-        assertEquals(24, NPuzzleHeuristics.manhattanSum(nPuzzle));
+        assertEquals(18, NPuzzleHeuristics.manhattanSum(nPuzzle));
     }
 
     @Test
