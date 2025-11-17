@@ -104,25 +104,11 @@ public class MazeGraph implements Graph<Cell> {
                 byte cost = grid[newRow][newCol];
                 if (cost != BLOCKED_CELL) {
                     Cell newCell = new Cell(newRow, newCol);
-                    edges.add(new Edge<>(DIR_NAME[i], cost, newCell));
+                    edges.add(new Edge<>(newCell, cost, DIR_NAME[i]));
                 }
             }
         }
         return edges;
-    }
-
-
-    /**
-     * Returns {@code true} if the provided {@link Cell}
-     * is the target cell.
-     *
-     * @param cell a cell in this maze
-     * @return {@code true} if the provided cell is the target cell
-     */
-    @Override
-    public boolean isTarget(Cell cell) {
-        return cell.row == this.targetRow &&
-                cell.col == this.targetCol;
     }
 
     /**

@@ -46,7 +46,7 @@ public class Main {
     private static List<Edge<Cell>> solve(MazeGraph maze, Cell start) {
         MazeHeuristics heuristics = MazeHeuristics.fromMaze(maze);
         Heuristic<Cell> heuristic = heuristics::manhattan;
-        Visit<Cell> visit = Visits.greedyBestFirst(maze, heuristic);
+        Visit<Cell> visit = Visits.bestFirst(maze, heuristic);
         return visit.run(start);
     }
 }

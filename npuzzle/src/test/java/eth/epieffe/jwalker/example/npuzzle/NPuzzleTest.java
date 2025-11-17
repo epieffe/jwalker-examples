@@ -23,7 +23,9 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NPuzzleTest {
 
@@ -49,8 +51,33 @@ public class NPuzzleTest {
     public void testNewRandomInstance() {
         NPuzzle nPuzzle = NPuzzle.newRandomInstance(3, true);
         assertEquals(3, nPuzzle.size());
-        Visit<NPuzzle> visit = Visits.greedyBestFirst(NPuzzleGraph.INSTANCE, NPuzzleHeuristics::manhattanSum);
+        Visit<NPuzzle> visit = Visits.bestFirst(NPuzzleGraph.INSTANCE, NPuzzleHeuristics::manhattanSum);
         List<Edge<NPuzzle>> path = visit.run(nPuzzle);
         assertNotNull(path);
+    }
+
+    @Test
+    public void testIsSolved() {
+        NPuzzle nPuzzle;
+        nPuzzle = NPuzzle.newInstance(0);
+        assertTrue(nPuzzle.isSolved());
+
+        nPuzzle = NPuzzle.newInstance(1, 2, 3, 0);
+        assertTrue(nPuzzle.isSolved());
+
+        nPuzzle = NPuzzle.newInstance(1, 2, 0, 3);
+        assertFalse(nPuzzle.isSolved());
+
+        nPuzzle = NPuzzle.newInstance(1, 2, 3, 4, 5, 6, 7, 8, 0);
+        assertTrue(nPuzzle.isSolved());
+
+        nPuzzle = NPuzzle.newInstance(0, 1, 2, 3, 4, 5, 6, 7, 8);
+        assertFalse(nPuzzle.isSolved());
+
+        nPuzzle = NPuzzle.newInstance(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0);
+        assertTrue(nPuzzle.isSolved());
+
+        nPuzzle = NPuzzle.newInstance(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0, 15);
+        assertFalse(nPuzzle.isSolved());
     }
 }

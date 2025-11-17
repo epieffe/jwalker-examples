@@ -48,48 +48,25 @@ public class NPuzzleGraph implements Graph<NPuzzle> {
         // move up
         if (node.emptyRow() > 0) {
             int newEmptyIndex = (node.emptyRow() - 1) * node.size + node.emptyCol();
-            edgeList.add(new Edge<>("UP", 1, swapEmptyCell(node, newEmptyIndex)));
+            edgeList.add(new Edge<>(swapEmptyCell(node, newEmptyIndex), 1, "UP"));
         }
         // move down
         if (node.emptyRow() < node.size - 1) {
             int newEmptyIndex = (node.emptyRow() + 1) * node.size + node.emptyCol();
-            edgeList.add(new Edge<>("DOWN", 1, swapEmptyCell(node, newEmptyIndex)));
+            edgeList.add(new Edge<>(swapEmptyCell(node, newEmptyIndex), 1, "DOWN"));
         }
         // move left
         if (node.emptyCol() > 0) {
             int newEmptyIndex = node.emptyRow() * node.size + (node.emptyCol() - 1);
-            edgeList.add(new Edge<>("LEFT", 1, swapEmptyCell(node, newEmptyIndex)));
+            edgeList.add(new Edge<>(swapEmptyCell(node, newEmptyIndex), 1, "LEFT"));
         }
         // move right
         if (node.emptyCol() < node.size - 1) {
             int newEmptyIndex = node.emptyRow() * node.size + (node.emptyCol() + 1);
-            edgeList.add(new Edge<>("RIGHT", 1, swapEmptyCell(node, newEmptyIndex)));
+            edgeList.add(new Edge<>(swapEmptyCell(node, newEmptyIndex), 1, "RIGHT"));
         }
 
         return edgeList;
-    }
-
-    /**
-     * Returns {@code true} if the provided {@link NPuzzle}
-     * instance is a target.
-     *
-     * @param node an instance of {@link NPuzzle}
-     * @return {@code true} if node is a target
-     * @throws NullPointerException if node is {@code null}
-     */
-    @Override
-    public boolean isTarget(NPuzzle node) {
-        // The last cell must be empty
-        if (node.table[node.table.length - 1] != NPuzzle.EMPTY_CELL) {
-            return false;
-        }
-        // The other cells must be ordered from 1 to n-1
-        for (int i = 1; i < node.table.length; ++i) {
-            if (node.table[i - 1] != i) {
-                return false;
-            }
-        }
-        return true;
     }
 
     // Returns a new NPuzzle instance with the empty cell
