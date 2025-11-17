@@ -32,21 +32,21 @@ java -jar npuzzle/target/npuzzle.jar
 ## 📂 Example projects
 Here we describe the example projects included in this repository.
 
-#### Maze
+### Maze
 The Maze project generates a random maze on a 2D grid, then it uses the *Best&#x2011;first&#160;Search* algorithm to find a path to the exit.
 
 The generated maze and the path to the exit are printed to the console.
 
 ![Maze](https://github.com/user-attachments/assets/3a4eec11-1e4d-4211-acdf-4a8560106740)
 
-#### N-Puzzle
+### N-Puzzle
 The N&#x2011;Puzzle project generates a random [15&#x2011;Puzzle](https://en.wikipedia.org/wiki/15_puzzle) configuration, then it uses the *A** algorithm to find a reasonably short sequence of moves that solve the puzzle.
 
 The sequence of moves to solve the puzzle from the initially generated configuration is printed to the console.
 
 ![N-Puzzle](https://github.com/user-attachments/assets/2dba24e2-ca56-47f7-bf44-f6f6f876141e)
 
-#### N-Queens
+### N-Queens
 The N&#x2011;Queens project uses the *Steepest&#160;descent* algorithm to solve the [8&#x2011;Queens](https://en.wikipedia.org/wiki/Eight_queens_puzzle) problem, which consists in placing eight chess queens on a 8x8 chess board so that no two queens threaten each other.
 
 Note that the *Steepest descent* algorithm is not guaranteed to always find an optimal node. Sometimes it might happen that, in the found configuration, there are still some queens threatening each other.
